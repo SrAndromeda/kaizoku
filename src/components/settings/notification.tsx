@@ -283,6 +283,160 @@ export function NotificationSettings() {
           </Group>
         </Accordion.Panel>
       </Accordion.Item>
+
+      <Accordion.Item value="ntfy">
+        <Accordion.Control icon={<Image src="/brand/ntfy.svg" width={20} height={20} />}>Ntfy</Accordion.Control>
+        <Accordion.Panel>
+          <Group position="apart" className={classes.item} spacing="xl" noWrap>
+            <Box>
+              <Breadcrumbs
+                separator="/"
+                styles={{
+                  separator: {
+                    marginLeft: 4,
+                    marginRight: 4,
+                  },
+                  breadcrumb: {
+                    textTransform: 'capitalize',
+                    fontSize: 13,
+                    fontWeight: 500,
+                  },
+                  root: {
+                    marginBottom: 5,
+                  },
+                }}
+              >
+                Enabled
+              </Breadcrumbs>
+              <Text size="xs" color="dimmed">
+                Enable Ntfy notifications
+              </Text>
+            </Box>
+            <SwitchItem
+              configKey="ntfyEnabled"
+              onUpdate={handleUpdate}
+              initialValue={settings.data.appConfig.ntfyEnabled}
+            />
+          </Group>
+          <Group position="apart" className={classes.item} spacing="xl" noWrap>
+            <Box>
+              <Breadcrumbs
+                separator="/"
+                styles={{
+                  separator: {
+                    marginLeft: 4,
+                    marginRight: 4,
+                  },
+                  breadcrumb: {
+                    textTransform: 'capitalize',
+                    fontSize: 13,
+                    fontWeight: 500,
+                  },
+                  root: {
+                    marginBottom: 5,
+                  },
+                }}
+              >
+                Host
+              </Breadcrumbs>
+              <Text size="xs" color="dimmed">
+                Ntfy host name or ip
+              </Text>
+            </Box>
+            <TextItem configKey="ntfyHost" onUpdate={handleUpdate} initialValue={settings.data.appConfig.ntfyHost} />
+          </Group>
+
+          <Group position="apart" className={classes.item} spacing="xl" noWrap>
+            <Box>
+              <Breadcrumbs
+                separator="/"
+                styles={{
+                  separator: {
+                    marginLeft: 4,
+                    marginRight: 4,
+                  },
+                  breadcrumb: {
+                    textTransform: 'capitalize',
+                    fontSize: 13,
+                    fontWeight: 500,
+                  },
+                  root: {
+                    marginBottom: 5,
+                  },
+                }}
+              >
+                Topic
+              </Breadcrumbs>
+              <Text size="xs" color="dimmed">
+                Ntfy Topic
+              </Text>
+            </Box>
+            <TextItem configKey="ntfyTopic" onUpdate={handleUpdate} initialValue={settings.data.appConfig.ntfyTopic} />
+          </Group>
+          <Group position="apart" className={classes.item} spacing="xl" noWrap>
+            <Box>
+              <Breadcrumbs
+                separator="/"
+                styles={{
+                  separator: {
+                    marginLeft: 4,
+                    marginRight: 4,
+                  },
+                  breadcrumb: {
+                    textTransform: 'capitalize',
+                    fontSize: 13,
+                    fontWeight: 500,
+                  },
+                  root: {
+                    marginBottom: 5,
+                  },
+                }}
+              >
+                Username
+              </Breadcrumbs>
+              <Text size="xs" color="dimmed">
+                Ntfy username (if needed)
+              </Text>
+            </Box>
+            <TextItem
+              configKey="ntfyUsername"
+              onUpdate={handleUpdate}
+              initialValue={settings.data.appConfig.ntfyUsername}
+            />
+          </Group>
+          <Group position="apart" className={classes.item} spacing="xl" noWrap>
+            <Box>
+              <Breadcrumbs
+                separator="/"
+                styles={{
+                  separator: {
+                    marginLeft: 4,
+                    marginRight: 4,
+                  },
+                  breadcrumb: {
+                    textTransform: 'capitalize',
+                    fontSize: 13,
+                    fontWeight: 500,
+                  },
+                  root: {
+                    marginBottom: 5,
+                  },
+                }}
+              >
+                Password
+              </Breadcrumbs>
+              <Text size="xs" color="dimmed">
+                Ntfy password (if needed)
+              </Text>
+            </Box>
+            <TextItem
+              configKey="ntfyPassword"
+              onUpdate={handleUpdate}
+              initialValue={settings.data.appConfig.ntfyPassword}
+            />
+          </Group>
+        </Accordion.Panel>
+      </Accordion.Item>
     </Accordion>
   );
 }

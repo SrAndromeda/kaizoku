@@ -75,6 +75,11 @@ model Settings {
   appriseEnabled       Boolean  @default(false)
   appriseHost          String?
   appriseUrls          String[] @default([])
+  ntfyEnabled          Boolean  @default(false)
+  ntfyHost             String?
+  ntfyTopic            String?
+  ntfyUsername         String?
+  ntfyPassword         String?
   komgaEnabled         Boolean  @default(false)
   komgaHost            String?
   komgaUser            String?

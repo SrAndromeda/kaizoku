@@ -3,6 +3,8 @@ import { prisma } from '../db/client';
 
 export const sendNotification = async (title: string, body: string, url?: string) => {
   const settings = await prisma.settings.findFirstOrThrow();
+  let auth = ``;
+  let authHeader = ``;
 
   if (settings.telegramEnabled && settings.telegramChatId && settings.telegramToken) {
     const bot = new TelegramBot(settings.telegramToken);
@@ -33,6 +35,26 @@ ${url || ''}
       }),
       headers: {
         'Content-Type': 'application/json',
+      },
+      method: 'POST',
+    });
+  }
+
+  if (settings.ntfyEnabled && settings.ntfyHost && settings.ntfyTopic) {
+    if (settings.ntfyUsername && settings.ntfyPassword) {
+      auth = `${settings.ntfyUsername}:${settings.ntfyPassword}`;
+      authHeader = `Basic ${Buffer.from(auth).toString('base64')}`;
+    }
+    await fetch(settings.ntfyHost, {
+      body: JSON.stringify({
+        topic: settings.ntfyTopic,
+        title,
+        message: `${body} ${url}`,
+        tags: ['Info'],
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: authHeader,
       },
       method: 'POST',
     });
